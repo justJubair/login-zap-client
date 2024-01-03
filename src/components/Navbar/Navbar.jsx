@@ -9,7 +9,7 @@ const Navbar = () => {
    
            
               isActive
-              ? "text-white text-base font-semibold bg-[#3b3ba2]"
+              ? "text-white text-base font-semibold "
               : "lg:text-white text-base font-semibold"
           }
         >
@@ -24,7 +24,7 @@ const Navbar = () => {
             isPending
               ? ""
               : isActive
-              ? "text-white text-base font-semibold bg-[#3b3ba2]"
+              ? "text-white text-base font-semibold "
               : "lg:text-white text-base font-semibold"
           }
         >
@@ -39,7 +39,7 @@ const Navbar = () => {
             isPending
               ? ""
               : isActive
-              ? "text-white text-base font-semibold bg-[#3b3ba2]"
+              ? "text-white text-base font-semibold "
               : "lg:text-white text-base font-semibold"
           }
         >
@@ -79,7 +79,7 @@ const Navbar = () => {
           </ul>
         </div>
         {/* <a className="btn btn-ghost text-lg bg-[#3131bc] text-white">Login Zap</a> */}
-        <img className="hidden w-32 rounded-lg px-2 bg-[#3b3ba2] lg:block" src={logo} alt="" />
+        <img className="hidden w-32 rounded-lg px-2 bg-[#4a4a9f] lg:block" src={logo} alt="" />
       </div>
       <div className="navbar-center hidden lg:flex">
         <ul className="menu menu-horizontal px-1">
@@ -88,7 +88,7 @@ const Navbar = () => {
         </ul>
       </div>
       <div className="navbar-end">
-        <a className="btn bg-[#3b3ba2] border-none text-white">Login</a>
+        <a className="btn bg-[#49497d] border-none text-white">Login</a>
       </div>
     </div>
   );
