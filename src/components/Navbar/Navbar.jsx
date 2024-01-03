@@ -4,12 +4,12 @@ const Navbar = () => {
     const navLinks = <>
     <li>
     <NavLink
-          to="/home"
-          className={({ isActive, isPending }) =>
-            isPending
-              ? ""
-              : isActive
-              ? "lg:text-white text-base font-semibold bg-purple-800"
+          to="/"
+          className={({ isActive }) =>
+   
+           
+              isActive
+              ? "text-white text-base font-semibold bg-[#3b3ba2]"
               : "lg:text-white text-base font-semibold"
           }
         >
@@ -24,7 +24,7 @@ const Navbar = () => {
             isPending
               ? ""
               : isActive
-              ? "lg:text-white text-base font-semibold bg-purple-800"
+              ? "text-white text-base font-semibold bg-[#3b3ba2]"
               : "lg:text-white text-base font-semibold"
           }
         >
@@ -39,7 +39,7 @@ const Navbar = () => {
             isPending
               ? ""
               : isActive
-              ? "lg:text-white text-base font-semibold bg-purple-800"
+              ? "text-white text-base font-semibold bg-[#3b3ba2]"
               : "lg:text-white text-base font-semibold"
           }
         >
@@ -50,7 +50,8 @@ const Navbar = () => {
     </>
 
   return (
-    <div className="navbar absolute z-30">
+    
+    <div className="navbar absolute z-30 px-8">
       <div className="navbar-start">
         <div className="dropdown">
           <div tabIndex={0} role="button" className="btn btn-ghost text-white lg:hidden">
@@ -78,7 +79,7 @@ const Navbar = () => {
           </ul>
         </div>
         {/* <a className="btn btn-ghost text-lg bg-[#3131bc] text-white">Login Zap</a> */}
-        <img className="w-32 rounded-lg px-2 bg-[#3131bc]" src={logo} alt="" />
+        <img className="hidden w-32 rounded-lg px-2 bg-[#3b3ba2] lg:block" src={logo} alt="" />
       </div>
       <div className="navbar-center hidden lg:flex">
         <ul className="menu menu-horizontal px-1">
@@ -87,7 +88,7 @@ const Navbar = () => {
         </ul>
       </div>
       <div className="navbar-end">
-        <a className="btn">Button</a>
+        <a className="btn bg-[#3b3ba2] border-none text-white">Login</a>
       </div>
     </div>
   );
