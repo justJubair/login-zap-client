@@ -1,4 +1,4 @@
-const Dashboard = () => {
+const Board = () => {
   return (
     <div className="max-w-screen-lg mx-auto">
       {/* user info */}
@@ -31,7 +31,7 @@ const Dashboard = () => {
                 <span className="badge">New</span>
               </a>
             </li>
-            
+
             <li>
               <a>Logout</a>
             </li>
@@ -196,19 +196,9 @@ const Dashboard = () => {
               </th>
             </tr>
           </tbody>
-          {/* foot */}
-          <tfoot>
-            <tr>
-              <th></th>
-              <th>Name</th>
-              <th>Job</th>
-              <th>Favorite Color</th>
-              <th></th>
-            </tr>
-          </tfoot>
         </table>
       </div>
     </div>
   );
 };
-export default Dashboard;
+export default Board;
