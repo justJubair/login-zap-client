@@ -9,8 +9,8 @@ const Navbar = () => {
    
            
               isActive
-              ? "text-white text-base font-semibold "
-              : "lg:text-white text-base font-semibold"
+              ? "text-indigo-800 font-bold text-lg"
+              : "lg:text-indigo-800 text-base font-bold"
           }
         >
             
@@ -24,8 +24,8 @@ const Navbar = () => {
             isPending
               ? ""
               : isActive
-              ? "text-white text-base font-semibold "
-              : "lg:text-white text-base font-semibold"
+              ? "text-indigo-800 text-lg font-bold "
+              : "lg:text-indigo-800 text-lg font-bold"
           }
         >
             
@@ -39,8 +39,8 @@ const Navbar = () => {
             isPending
               ? ""
               : isActive
-              ? "text-white text-base font-semibold "
-              : "lg:text-white text-base font-semibold"
+              ? "text-indigo-800 text-lg font-bold "
+              : "lg:text-indigo-800 text-lg font-bold"
           }
         >
             
@@ -79,7 +79,7 @@ const Navbar = () => {
           </ul>
         </div>
         {/* <a className="btn btn-ghost text-lg bg-[#3131bc] text-white">Login Zap</a> */}
-        <img className="hidden w-32 rounded-lg px-2 bg-[#4a4a9f] lg:block" src={logo} alt="" />
+        <img className="hidden w-32 rounded-lg px-2 py-1 bg-[#4a4a9f] lg:block" src={logo} alt="" />
       </div>
       <div className="navbar-center hidden lg:flex">
         <ul className="menu menu-horizontal px-1">
