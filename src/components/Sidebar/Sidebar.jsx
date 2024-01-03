@@ -11,7 +11,7 @@ const Sidebar = () => {
       {/* sidebar navlinks */}
       <div>
         <img
-          className="w-40 mx-auto rounded-lg px-2 my-10 bg-[#3131bc]"
+          className="w-36 mx-auto rounded-lg px-2 my-10 bg-[#3131bc]"
           src={logo}
           alt="logo"
         />
@@ -23,8 +23,8 @@ const Sidebar = () => {
             isPending
               ? ""
               : isActive
-              ? "text-white font-semibold text-lg flex items-center gap-2 ml-8"
-              : "text-gray-400 font-semibold text-lg flex items-center gap-2 ml-8 hover:text-white"
+              ? "text-white font-semibold flex items-center gap-2 ml-8"
+              : "text-gray-400 font-semibold flex items-center gap-2 ml-8 hover:text-white"
           }
         >
           <FaUsersGear size={25} />
@@ -38,8 +38,8 @@ const Sidebar = () => {
             isPending
               ? ""
               : isActive
-              ? "text-white font-semibold text-lg flex items-center gap-2 ml-8"
-              : "text-gray-400 font-semibold text-lg flex items-center gap-2 ml-8 mt-6 hover:text-white"
+              ? "text-white font-semibold flex items-center gap-2 ml-8"
+              : "text-gray-400 font-semibold flex items-center gap-2 ml-8 mt-6 hover:text-white"
           }
         >
           <IoMdSettings size={25} />
@@ -53,8 +53,8 @@ const Sidebar = () => {
           isPending
             ? ""
             : isActive
-            ? "text-white font-semibold text-lg flex items-center gap-2 ml-8"
-            : "text-gray-400 font-semibold text-lg flex items-center gap-2 ml-8 mb-7 hover:text-white"
+            ? "text-white font-semibold flex items-center gap-2 ml-8"
+            : "text-gray-400 font-semibold flex items-center gap-2 ml-8 mb-7 hover:text-white"
         }
       >
         <IoIosLogOut size={25} />
