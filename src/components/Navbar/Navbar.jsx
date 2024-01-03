@@ -1,5 +1,5 @@
 import { NavLink } from "react-router-dom";
-
+import logo from "../../assets/images/logo-transparent.svg"
 const Navbar = () => {
     const navLinks = <>
     <li>
@@ -9,8 +9,8 @@ const Navbar = () => {
             isPending
               ? ""
               : isActive
-              ? "text-white font-semibold flex items-center gap-2 ml-8"
-              : "text-gray-400 font-semibold flex items-center gap-2 ml-8 hover:text-white"
+              ? "lg:text-white text-base font-semibold bg-purple-800"
+              : "lg:text-white text-base font-semibold"
           }
         >
             
@@ -24,8 +24,8 @@ const Navbar = () => {
             isPending
               ? ""
               : isActive
-              ? "text-white font-semibold flex items-center gap-2 ml-8"
-              : "text-gray-400 font-semibold flex items-center gap-2 ml-8 hover:text-white"
+              ? "lg:text-white text-base font-semibold bg-purple-800"
+              : "lg:text-white text-base font-semibold"
           }
         >
             
@@ -39,8 +39,8 @@ const Navbar = () => {
             isPending
               ? ""
               : isActive
-              ? "text-white font-semibold flex items-center gap-2 ml-8"
-              : "text-gray-400 font-semibold flex items-center gap-2 ml-8 hover:text-white"
+              ? "lg:text-white text-base font-semibold bg-purple-800"
+              : "lg:text-white text-base font-semibold"
           }
         >
             
@@ -50,10 +50,10 @@ const Navbar = () => {
     </>
 
   return (
-    <div className="navbar absolute">
+    <div className="navbar absolute z-30">
       <div className="navbar-start">
         <div className="dropdown">
-          <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
+          <div tabIndex={0} role="button" className="btn btn-ghost text-white lg:hidden">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               className="h-5 w-5"
@@ -77,7 +77,8 @@ const Navbar = () => {
            
           </ul>
         </div>
-        <a className="btn btn-ghost text-xl">daisyUI</a>
+        {/* <a className="btn btn-ghost text-lg bg-[#3131bc] text-white">Login Zap</a> */}
+        <img className="w-32 rounded-lg px-2 bg-[#3131bc]" src={logo} alt="" />
       </div>
       <div className="navbar-center hidden lg:flex">
         <ul className="menu menu-horizontal px-1">
