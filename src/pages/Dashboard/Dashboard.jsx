@@ -10,7 +10,7 @@ const Dashboard = () => {
                <Sidebar/>
             </div>
 
-            {/* dashboard */}
+            {/* board */}
             <div className="col-span-10">
                 <Board/>
             </div>
