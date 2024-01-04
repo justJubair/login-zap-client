@@ -1,19 +1,41 @@
 import { Link } from "react-router-dom";
 import logo from "../../assets/images/logo-transparent.svg";
+import { useState } from "react";
 const Register = () => {
+    const [inputValue, setInputValue] = useState("");
+    const [suggestions, setSuggestions] = useState([]);
+
+    // Dummy list of states
+    const stateNames = ["Gujarat", "Maharashtra", "Karnataka"]
+
+    const handleInputChange = e=>{
+       const value = e.target.value;
+       setInputValue(value)
+
+    //    Filter state names
+    const filteredSuggestions = stateNames.filter(state=> state.toLowerCase().includes(value.toLowerCase()))
+
+    setSuggestions(filteredSuggestions)
+    }
+
+    const handleSuggestionClick = (suggestion)=>{
+        setInputValue(suggestion)
+        setSuggestions([])
+    }
+
   return (
     <div>
       <Link to="/">
         {" "}
         <img
-          className="absolute w-28 bg-[#4545b1] top-4 left-4 rounded px-2 py-1"
+          className="hidden absolute w-28 bg-[#4545b1] top-4 left-4 rounded px-2 py-1 md:block"
           src={logo}
           alt="logo"
         />
       </Link>
-      <div className="hero min-h-screen bg-base-200">
+      <div className="hero min-h-screen bg-base-200 py-10 px-4">
         <div className="w-full flex flex-col items-center space-y-8">
-          <div className="text-center lg:text-left">
+          <div className="text-center">
             <h1 className="text-5xl font-bold">Register now!</h1>
           </div>
           <div className="card shrink-0 w-full max-w-2xl shadow-2xl bg-base-100">
@@ -76,7 +98,7 @@ const Register = () => {
              {/* checkbox */}
               <div className="form-control">
                 <label className="label">
-                  <span>How did you hear about this?</span>
+                  <span>How did you hear about us?</span>
                 </label>
 
               <div className="flex justify-around items-center my-2">
@@ -116,34 +138,49 @@ const Register = () => {
               </div>
                
               </div>
-              <div className="form-control">
+
+              <div  className="flex items-center justify-between gap-4">
+              <div className="form-control w-full">
                 <label className="label">
-                  <span className="label-text">Password</span>
+                  <span className="label-text">City</span>
+                </label>
+                <select defaultValue="mumbai" name="city" className="select select-bordered w-full">
+                  
+                  <option value="mumbai">Mumbai</option>
+                  <option value="pune">Pune</option>
+                  <option value="ahmedabad">Ahmedabad</option>
+                </select>
+              </div>
+              <div className="form-control w-full">
+                <label className="label">
+                  <span className="label-text">State</span>
                 </label>
                 <input
-                  type="password"
-                  placeholder="password"
+                  type="text"
+                  value={inputValue}
+                  onChange={handleInputChange}
+                  placeholder="state"
                   className="input input-bordered"
                   required
                 />
+                {
+                    suggestions.length > 0 && <ul className=" list-none p-0 m-0">
+                        {suggestions.map((suggestion,index)=> <li className="cursor-pointer p-2 border-2 rounded-lg hover:bg-base-200" key={index} onClick={()=> handleSuggestionClick(suggestion)}>
+                            {suggestion}
+                        </li>)}
+                    </ul>
+                }
               </div>
+              </div>
+
+
               <div className="form-control">
                 <label className="label">
                   <span className="label-text">Password</span>
                 </label>
                 <input
                   type="password"
-                  placeholder="password"
-                  className="input input-bordered"
-                  required
-                />
-              </div>
-              <div className="form-control">
-                <label className="label">
-                  <span className="label-text">Password</span>
-                </label>
-                <input
-                  type="password"
+                  name="password"
                   placeholder="password"
                   className="input input-bordered"
                   required
