@@ -39,9 +39,13 @@ const Login = () => {
                 </label>
               </div>
               <div className="form-control mt-6">
-                <button className="btn btn-primary">Login</button>
+                <button className="btn bg-[#4545b1] text-white">Login</button>
               </div>
             </form>
+            <div className="flex items-center justify-between px-4 py-2">
+                <p className="text-base font-medium">New to Login Zap?</p>
+                <Link to="/register" className="btn btn-link text-base">Register Now</Link>
+            </div>
           </div>
         </div>
       </div>
