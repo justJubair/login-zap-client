@@ -5,6 +5,8 @@ import Dashboard from "../pages/Dashboard/Dashboard";
 import About from "../pages/About/About";
 import Login from "../pages/Login/Login";
 import Register from "../pages/Register/Register";
+import Board from "../components/Board/Board";
+import Setting from "../pages/Dashboard/Setting";
 
 
 const Router = createBrowserRouter([
@@ -23,8 +25,18 @@ const Router = createBrowserRouter([
         ]
     },
     {
-        path: "/manageUsers",
-        element: <Dashboard/>
+        path: "/dashboard",
+        element: <Dashboard/>,
+        children: [
+            {
+                path: "/dashboard/manageUsers",
+                element: <Board/>
+            },
+            {
+                path: "/dashboard/setting",
+                element: <Setting/>
+            }
+        ]
     },
     {
         path: "/login",

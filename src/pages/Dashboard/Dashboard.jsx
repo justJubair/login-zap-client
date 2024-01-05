@@ -1,3 +1,4 @@
+import { Outlet } from "react-router-dom";
 import Board from "../../components/Board/Board";
 import Sidebar from "../../components/Sidebar/Sidebar";
 
@@ -12,7 +13,7 @@ const Dashboard = () => {
 
             {/* board */}
             <div className="col-span-10">
-                <Board/>
+             <Outlet/>
             </div>
         </div>
     )}

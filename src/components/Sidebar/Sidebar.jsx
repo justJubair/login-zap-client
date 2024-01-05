@@ -30,7 +30,7 @@ const Sidebar = () => {
 
         {/* manage users */}
         <NavLink
-          to="/manageUsers"
+          to="/dashboard/manageUsers"
           className={({ isActive, isPending }) =>
             isPending
               ? ""
@@ -45,12 +45,12 @@ const Sidebar = () => {
 
         {/* setting */}
         <NavLink
-          to="/setting"
+          to="/dashboard/setting"
           className={({ isActive, isPending }) =>
             isPending
               ? ""
               : isActive
-              ? "text-white font-semibold flex items-center gap-2 ml-8"
+              ? "text-white font-semibold flex items-center gap-2 ml-8 mt-6"
               : "text-gray-400 font-semibold flex items-center gap-2 ml-8 mt-6 hover:text-white"
           }
         >
