@@ -1,4 +1,15 @@
+import useAuth from "../../hooks/useAuth";
+
 const Board = () => {
+  const {user, logOut} = useAuth()
+
+  const handleLogout = ()=>{
+    logOut()
+    .then()
+    .catch(err=>{
+      console.log(err)
+    })
+  }
   return (
     <div className="max-w-screen-lg mx-auto">
       {/* user info */}
@@ -23,7 +34,7 @@ const Board = () => {
             className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52"
           >
             <li>
-              <a>User name</a>
+              <a>{user?.displayName}</a>
             </li>
             <li>
               <a className="justify-between">
@@ -32,7 +43,7 @@ const Board = () => {
               </a>
             </li>
 
-            <li>
+            <li onClick={handleLogout}>
               <a>Logout</a>
             </li>
           </ul>
