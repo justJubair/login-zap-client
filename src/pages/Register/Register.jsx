@@ -5,6 +5,7 @@ import useAuth from "../../hooks/useAuth";
 import toast from "react-hot-toast";
 import { updateProfile } from "firebase/auth";
 import auth from "../../firebase/firebase.config";
+import { saveUser } from "../../api";
 const Register = () => {
   // get nagivate hook from react router dom
   const navigate = useNavigate()
@@ -49,7 +50,7 @@ const Register = () => {
   };
 
   // Handler function to get value from register form and signUp user
-  const handleRegister = (e) => {
+  const handleRegister = async(e) => {
     e.preventDefault();
     const form = e.target;
     const name = form.name.value;
@@ -61,22 +62,33 @@ const Register = () => {
     const state = inputValue;
     const password = form.password.value;
 
-    try{
-        signUp(email, password) 
-        .then(()=>{
-           updateProfile(auth.currentUser, {
-            displayName: name
-           }).then((userCredential)=>{
-            if(userCredential?.user?.email){
-              toast.success(`${name} you registered successfully`)
-              navigate("/dashboard/manageUsers")
-            }
-           })
-        })
+    const user = {phone, gender, checkbox, city, state, name, email}
+
+    const dbResponse = await saveUser(user)
+    if(dbResponse.insertedId){
+      signUp(email, password) 
+      .then((userCredential)=>{
+      
+          if(userCredential?.user?.email){
+            updateProfile(auth.currentUser, {
+              displayName: name
+             }).then(()=>{
+  
+                  toast.success(`${name} you registered successfully`)
+                  navigate("/dashboard/manageUsers")
+              
+           
+             }).catch(err=>console.log(err))
+          }
+        
+      })
+      .catch(err=>{
+        console.log(err)
+      })
     }
-    catch(err){
-      toast.error(err.message)
-    }
+  
+       
+    
   };
 
   return (
