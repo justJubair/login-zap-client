@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import Loader from "../Loader/Loader";
 
 const UpdateEmployee = () => {
     const [employee, setEmployee] = useState({})
@@ -9,8 +10,11 @@ const UpdateEmployee = () => {
         .then(res=> res.json())
         .then(data=> setEmployee(data))
     },[id])
-
-    console.log(employee)
+    
+   
+    if(!employee.role){
+        return <Loader/>
+    }
     return(
         <div className="max-w-screen-lg mx-auto">
         {/* Heading */}
@@ -24,6 +28,7 @@ const UpdateEmployee = () => {
            <input
               type="text"
               placeholder="Name"
+              defaultValue={employee.name}
               name="name"
               className="input input-bordered w-full"
               required
@@ -31,6 +36,7 @@ const UpdateEmployee = () => {
             <input
               type="email"
               placeholder="Email"
+              defaultValue={employee.email}
               name="email"
               className="input input-bordered w-full"
               required
@@ -42,11 +48,12 @@ const UpdateEmployee = () => {
             <input
               type="number"
               placeholder="Phone number"
+              defaultValue={employee.phone}
               name="phone"
               className="input input-bordered w-full [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none"
               required
             />
-            <select name="role"  className="select select-bordered w-full">
+            <select name="role" defaultValue={employee?.role} className="select select-bordered w-full">
               <option disabled>
                Role?
               </option>
