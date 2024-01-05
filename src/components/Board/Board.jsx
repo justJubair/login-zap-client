@@ -21,7 +21,7 @@ const Board = () => {
   }
 
   useEffect(()=>{
-    fetch(`http://localhost:5000/employees?searchText=${searchInput}`)
+    fetch(`https://login-zap-server.vercel.app/employees?searchText=${searchInput}`)
     .then(res=> res.json())
     .then(data=> setEmployees(data))
   },[searchInput])

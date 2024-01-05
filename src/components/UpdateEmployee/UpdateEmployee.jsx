@@ -9,7 +9,7 @@ const UpdateEmployee = () => {
     const {id} = useParams()
     const navigate = useNavigate()
     useEffect(()=>{
-        fetch(`http://localhost:5000/employee/${id}`)
+        fetch(`https://login-zap-server.vercel.app/employee/${id}`)
         .then(res=> res.json())
         .then(data=> setEmployee(data))
     },[id])
