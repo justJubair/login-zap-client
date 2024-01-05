@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import logo from "../../assets/images/logo-transparent.svg";
 import { useState } from "react";
 import useAuth from "../../hooks/useAuth";
@@ -6,6 +6,8 @@ import toast from "react-hot-toast";
 import { updateProfile } from "firebase/auth";
 import auth from "../../firebase/firebase.config";
 const Register = () => {
+  // get nagivate hook from react router dom
+  const navigate = useNavigate()
   // Get auth functionality
   const {signUp} = useAuth()
   const [inputValue, setInputValue] = useState("");
@@ -60,21 +62,21 @@ const Register = () => {
     const password = form.password.value;
 
     try{
-        signUp(email, password)
+        signUp(email, password) 
         .then(()=>{
            updateProfile(auth.currentUser, {
             displayName: name
-           }).then(()=>{
-            toast.success(`${name} you registered successfully`)
+           }).then((userCredential)=>{
+            if(userCredential?.user?.email){
+              toast.success(`${name} you registered successfully`)
+              navigate("/dashboard")
+            }
            })
         })
     }
     catch(err){
       toast.error(err.message)
     }
-
-   
-
   };
 
   return (

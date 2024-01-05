@@ -1,6 +1,31 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import logo from "../../assets/images/logo-transparent.svg"
+import useAuth from "../../hooks/useAuth";
+import toast from "react-hot-toast";
 const Login = () => {
+  const navigate = useNavigate()
+  const {loginUser} = useAuth()
+  const handleLogin = e=>{
+    e.preventDefault()
+    const form = e.target;
+    const email = form.email.value;
+    const password = form.password.value;
+
+    try{
+        loginUser(email, password)
+        .then((userCredential)=> {
+          if(userCredential.user.email){
+            toast.success("Logged in successful")
+            navigate("/dashboard")
+          }
+          
+        })
+    }
+    catch(err){
+      toast.err(err.message)
+    }
+    
+  }
   return (
     <div>
        <Link to="/"> <img className="absolute w-28 bg-[#4545b1] top-4 left-4 rounded px-2 py-1" src={logo} alt="logo" /></Link>
@@ -10,13 +35,14 @@ const Login = () => {
             <h1 className="text-5xl font-bold">Login now!</h1>
           </div>
           <div className="card shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
-            <form className="card-body">
+            <form onSubmit={handleLogin} className="card-body">
               <div className="form-control">
                 <label className="label">
                   <span className="label-text">Email</span>
                 </label>
                 <input
                   type="email"
+                  name="email"
                   placeholder="email"
                   className="input input-bordered"
                   required
@@ -28,6 +54,7 @@ const Login = () => {
                 </label>
                 <input
                   type="password"
+                  name="password"
                   placeholder="password"
                   className="input input-bordered"
                   required
