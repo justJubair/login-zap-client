@@ -17,7 +17,7 @@ const Board = () => {
     e.preventDefault()
     const searchText = e.target.searchText.value;
     setSearchInput(searchText)
-    
+   
   }
 
   useEffect(()=>{
