@@ -9,7 +9,7 @@ const Navbar = () => {
    
            
               isActive
-              ? "text-indigo-800 font-bold text-lg"
+              ? "text-indigo-300 font-bold text-lg"
               : "lg:text-white text-base font-bold"
           }
         >
