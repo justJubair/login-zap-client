@@ -9,6 +9,7 @@ import Board from "../components/Board/Board";
 import Setting from "../pages/Dashboard/Setting";
 import PrivateRoute from "./PrivateRoute";
 import AddEmployee from "../components/AddEmployee/AddEmployee";
+import UpdateEmployee from "../components/UpdateEmployee/UpdateEmployee";
 
 
 const Router = createBrowserRouter([
@@ -39,8 +40,12 @@ const Router = createBrowserRouter([
                 element: <Setting/>
             },
             {
-                path: "/dashboard/addUser",
+                path: "/dashboard/addEmployee",
                 element: <AddEmployee/>
+            },
+            {
+                path: "/dashboard/updateEmployee/:id",
+                element: <UpdateEmployee/>
             }
         ]
     },

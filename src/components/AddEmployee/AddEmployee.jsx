@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 
 const AddEmployee = () => {
     const navigate = useNavigate()
-    const handleAddUser = async(e)=>{
+    const handleAddEmployee = async(e)=>{
         e.preventDefault()
         const form = e.target;
         const name = form.name.value;
@@ -26,7 +26,7 @@ const AddEmployee = () => {
 
       {/* form */}
       <div>
-        <form onSubmit={handleAddUser}>
+        <form onSubmit={handleAddEmployee}>
             {/* name and email */}
          <div className="flex items-center gap-4">
          <input

@@ -4,7 +4,7 @@ export const axiosInstance = axios.create({
     baseURL: "http://localhost:5000"
 })
 
-// POST; a user
+// POST; an user
 export const saveUser = async(user)=>{
     try{
         const res = await axiosInstance.post("/users", user)
@@ -15,7 +15,7 @@ export const saveUser = async(user)=>{
     }
 }
 
-// POST; a employee
+// POST; an employee
 export const saveEmployee = async(employee)=>{
     try{
         const res = await axiosInstance.post("/employees", employee)
@@ -26,16 +26,7 @@ export const saveEmployee = async(employee)=>{
     }
 }
 
-// // DELETE; an employee
-// export const deleteEmployee = async(id)=>{
-//     try{
-//         const res = await axiosInstance.delete(`/employee/${id}`)
-//         return res.data
-//     }
-//     catch(err){
-//         console.log(err)
-//     }
-// }
+
 
 
 

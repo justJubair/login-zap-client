@@ -97,7 +97,7 @@ const Board = () => {
       </div>
 
       {/* add user button */}
-      <Link to="/dashboard/addUser" className="flex justify-end py-4">
+      <Link to="/dashboard/addEmployee" className="flex justify-end py-4">
         <button className="btn bg-indigo-500 text-white border-none hover:bg-indigo-600">
           Add User
         </button>
@@ -112,7 +112,7 @@ const Board = () => {
             <h2 className="card-title">Name: {employee?.name}</h2>
             <p>Email: {employee?.email}</p>
             <div className="card-actions justify-end">
-              <button className="btn btn-sm btn-primary"><FaEdit size={15}/></button>
+              <Link to={`/dashboard/updateEmployee/${employee?._id}`} className="btn btn-sm btn-primary"><FaEdit size={15}/></Link>
               <button onClick={()=>handleDelete(employee._id)} className="btn btn-sm btn-primary"><AiFillDelete size={15}/></button>
             </div>
           </div>
