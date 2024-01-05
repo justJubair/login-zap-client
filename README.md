@@ -14,17 +14,17 @@ MongoDB used as the database for efficient storage and management of user data.
 - React Components: Utilized React components for a modular and maintainable codebase, promoting reusability.
 
 ### Getting Started:
-- Clone the repository
+Clone the repository
 ```
 git clone https://github.com/justJubair/login-zap-client.git
 ```
 
-- Install the dependencies
+Install the dependencies
 ```
 npm install
 ```
 
-- Create a project on firebase and update the credentials on .env.local file
+Create a project on firebase and update the credentials on .env.local file
 ```
 VITE_APIKEY=Your_Credentials
 VITE_AUTHDOMAIN=Your_Credentials
@@ -34,7 +34,7 @@ VITE_MESSAGINGSENDERID=Your_Credentials
 VITE_APPID=Your_Credentials
 ```
 
-- Run the application
+Run the application
 ```
 npm run dev
 ``` 
