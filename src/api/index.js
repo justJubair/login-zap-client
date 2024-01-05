@@ -1,6 +1,6 @@
 import axios from "axios"
 
-const axiosInstance = axios.create({
+export const axiosInstance = axios.create({
     baseURL: "http://localhost:5000"
 })
 
@@ -25,6 +25,17 @@ export const saveEmployee = async(employee)=>{
         console.log(err)
     }
 }
+
+// // DELETE; an employee
+// export const deleteEmployee = async(id)=>{
+//     try{
+//         const res = await axiosInstance.delete(`/employee/${id}`)
+//         return res.data
+//     }
+//     catch(err){
+//         console.log(err)
+//     }
+// }
 
 
 

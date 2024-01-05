@@ -2,6 +2,12 @@ import { Link } from "react-router-dom";
 import useAuth from "../../hooks/useAuth";
 import { useEffect, useState } from "react";
 
+// icons
+import { FaEdit } from "react-icons/fa";
+import { AiFillDelete } from "react-icons/ai";
+import Swal from "sweetalert2";
+import { axiosInstance} from "../../api";
+
 const Board = () => {
   const { user, logOut } = useAuth();
   const [employees, setEmployees] = useState([])
@@ -12,8 +18,6 @@ const Board = () => {
     .then(data=> setEmployees(data))
   },[])
 
-  console.log(employees)
-
   const handleLogout = () => {
     logOut()
       .then()
@@ -21,6 +25,37 @@ const Board = () => {
         console.log(err);
       });
   };
+
+  // Handler function for delete employee
+  const handleDelete = (_id)=>{
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, delete it!"
+    }).then((result) => {
+      if (result.isConfirmed) {
+
+        axiosInstance.delete(`/employee/${_id}`)
+        .then(res=>{
+          if(res?.data?.deletedCount > 0){
+            const remainingEmployee = employees.filter(employee => employee._id !== _id)
+            setEmployees(remainingEmployee)
+            Swal.fire({
+              title: "Deleted!",
+              text: "Your file has been deleted.",
+              icon: "success"
+            });
+          }
+        })
+      
+        
+      }
+    });
+  }
   return (
     <div className="max-w-screen-lg mx-auto">
       {/* user info */}
@@ -71,24 +106,20 @@ const Board = () => {
       {/* employees */}
       <div className="grid grid-cols-2 gap-6 mt-6">
 
-        <div className="card bg-base-100 shadow-xl">
+        {
+          employees?.map(employee=>  <div key={employee._id} className="card bg-base-100 shadow-xl">
           <div className="card-body">
-            <h2 className="card-title">Card title!</h2>
-            <p>If a dog chews shoes whose shoes does he choose?</p>
+            <h2 className="card-title">Name: {employee?.name}</h2>
+            <p>Email: {employee?.email}</p>
             <div className="card-actions justify-end">
-              <button className="btn btn-primary">Buy Now</button>
+              <button className="btn btn-sm btn-primary"><FaEdit size={15}/></button>
+              <button onClick={()=>handleDelete(employee._id)} className="btn btn-sm btn-primary"><AiFillDelete size={15}/></button>
             </div>
           </div>
-        </div>
-        <div className="card bg-base-100 shadow-xl">
-          <div className="card-body">
-            <h2 className="card-title">Card title!</h2>
-            <p>If a dog chews shoes whose shoes does he choose?</p>
-            <div className="card-actions justify-end">
-              <button className="btn btn-primary">Buy Now</button>
-            </div>
-          </div>
-        </div>
+        </div>)
+        }
+       
+        
       </div>
     </div>
   );
