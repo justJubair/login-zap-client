@@ -16,7 +16,7 @@ const Login = () => {
         .then((userCredential)=> {
           if(userCredential.user.email){
             toast.success("Logged in successful")
-            navigate("/dashboard")
+            navigate("/manageUsers")
           }
           
         })

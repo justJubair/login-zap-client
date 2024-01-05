@@ -1,4 +1,4 @@
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import logo from "../../assets/images/logo-transparent.svg";
 
 // icons
@@ -10,11 +10,13 @@ const Sidebar = () => {
     <div className="flex flex-col justify-between min-h-screen">
       {/* sidebar navlinks */}
       <div>
+        <Link to="/">
         <img
           className="w-36 mx-auto rounded-lg px-2 my-10 bg-[#3131bc]"
           src={logo}
           alt="logo"
         />
+        </Link>
 
         {/* manage users */}
         <NavLink

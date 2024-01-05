@@ -23,7 +23,7 @@ const Router = createBrowserRouter([
         ]
     },
     {
-        path: "/dashboard",
+        path: "/manageUsers",
         element: <Dashboard/>
     },
     {

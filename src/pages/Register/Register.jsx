@@ -69,7 +69,7 @@ const Register = () => {
            }).then((userCredential)=>{
             if(userCredential?.user?.email){
               toast.success(`${name} you registered successfully`)
-              navigate("/dashboard")
+              navigate("/manageUsers")
             }
            })
         })
