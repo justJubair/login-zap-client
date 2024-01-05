@@ -10,13 +10,21 @@ import { axiosInstance} from "../../api";
 
 const Board = () => {
   const { user, logOut } = useAuth();
+  const [searchInput, setSearchInput] = useState("")
   const [employees, setEmployees] = useState([])
 
+  const handleSearch = (e)=>{
+    e.preventDefault()
+    const searchText = e.target.searchText.value;
+    setSearchInput(searchText)
+    
+  }
+
   useEffect(()=>{
-    fetch("http://localhost:5000/employees")
+    fetch(`http://localhost:5000/employees?searchText=${searchInput}`)
     .then(res=> res.json())
     .then(data=> setEmployees(data))
-  },[])
+  },[searchInput])
 
   const handleLogout = () => {
     logOut()
@@ -71,7 +79,7 @@ const Board = () => {
             <div className="w-10 rounded-full">
               <img
                 alt="Tailwind CSS Navbar component"
-                src="https://i.pinimg.com/originals/32/cb/60/32cb600629bfdad9cbe5f138a67dc7d3.jpg"
+                src="https://www.shutterstock.com/image-vector/default-avatar-profile-icon-social-600nw-1677509740.jpg"
               />
             </div>
           </div>
@@ -97,11 +105,20 @@ const Board = () => {
       </div>
 
       {/* add user button */}
-      <Link to="/dashboard/addEmployee" className="flex justify-end py-4">
+      <div className="flex items-center justify-between py-8">
+    {/* Search box */}
+        <form onSubmit={handleSearch} className="flex items-center gap-4">
+        <input name="searchText" type="text" placeholder="Search User" className="input input-bordered w-full" />
+        <button className="btn bg-indigo-500 text-white hover:bg-indigo-600" type="submit">Search</button>
+        </form>
+
+      {/* Add user button */}
+      <Link to="/dashboard/addEmployee">
         <button className="btn bg-indigo-500 text-white border-none hover:bg-indigo-600">
           Add User
         </button>
       </Link>
+      </div>
 
       {/* employees */}
       <div className="grid grid-cols-2 gap-6 mt-6">

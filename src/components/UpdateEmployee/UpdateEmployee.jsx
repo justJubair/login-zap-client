@@ -28,13 +28,9 @@ const UpdateEmployee = () => {
         if(dbResponse.modifiedCount>0){
             toast.success("User Updated")
             navigate("/dashboard/manageUsers")
-        }
-       
-        
+        } 
     }
-
     
-   
     if(!employee.role){
         return <Loader/>
     }
