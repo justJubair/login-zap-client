@@ -108,7 +108,7 @@ const Board = () => {
       <div className="flex items-center justify-between py-8">
     {/* Search box */}
         <form onSubmit={handleSearch} className="flex items-center gap-4">
-        <input name="searchText" type="text" placeholder="Search User" className="input input-bordered w-full" />
+        <input name="searchText" type="text" placeholder="Search user by name" className="input input-bordered w-full" />
         <button className="btn bg-indigo-500 text-white hover:bg-indigo-600" type="submit">Search</button>
         </form>
 
@@ -124,11 +124,14 @@ const Board = () => {
       <div className="grid grid-cols-2 gap-6 mt-6">
 
         {
-          employees?.map(employee=>  <div key={employee._id} className="card bg-base-100 shadow-xl">
+          employees?.map(employee=>
+          <div key={employee._id}  className="card bg-base-100 shadow-xl cursor-pointer">
+            
           <div className="card-body">
             <h2 className="card-title">Name: {employee?.name}</h2>
             <p>Email: {employee?.email}</p>
             <div className="card-actions justify-end">
+              <Link to={`/dashboard/employeeDetails/${employee?._id}`} className="btn btn-sm btn-primary">Details</Link>
               <Link to={`/dashboard/updateEmployee/${employee?._id}`} className="btn btn-sm btn-primary"><FaEdit size={15}/></Link>
               <button onClick={()=>handleDelete(employee._id)} className="btn btn-sm btn-primary"><AiFillDelete size={15}/></button>
             </div>

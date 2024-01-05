@@ -10,6 +10,7 @@ import Setting from "../pages/Dashboard/Setting";
 import PrivateRoute from "./PrivateRoute";
 import AddEmployee from "../components/AddEmployee/AddEmployee";
 import UpdateEmployee from "../components/UpdateEmployee/UpdateEmployee";
+import EmployeeDetails from "../components/EmployeeDetails/EmployeeDetails";
 
 
 const Router = createBrowserRouter([
@@ -46,6 +47,10 @@ const Router = createBrowserRouter([
             {
                 path: "/dashboard/updateEmployee/:id",
                 element: <UpdateEmployee/>
+            },
+            {
+                path: "/dashboard/employeeDetails/:id",
+                element: <EmployeeDetails/>
             }
         ]
     },
