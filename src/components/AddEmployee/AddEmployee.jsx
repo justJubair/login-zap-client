@@ -2,7 +2,7 @@ import toast from "react-hot-toast";
 import { saveEmployee } from "../../api";
 import { useNavigate } from "react-router-dom";
 
-const AddUser = () => {
+const AddEmployee = () => {
     const navigate = useNavigate()
     const handleAddUser = async(e)=>{
         e.preventDefault()
@@ -69,4 +69,4 @@ const AddUser = () => {
     </div>
   );
 };
-export default AddUser;
+export default AddEmployee;

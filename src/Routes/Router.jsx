@@ -8,7 +8,7 @@ import Register from "../pages/Register/Register";
 import Board from "../components/Board/Board";
 import Setting from "../pages/Dashboard/Setting";
 import PrivateRoute from "./PrivateRoute";
-import AddUser from "../components/AddUser/AddUser";
+import AddEmployee from "../components/AddEmployee/AddEmployee";
 
 
 const Router = createBrowserRouter([
@@ -40,7 +40,7 @@ const Router = createBrowserRouter([
             },
             {
                 path: "/dashboard/addUser",
-                element: <AddUser/>
+                element: <AddEmployee/>
             }
         ]
     },
