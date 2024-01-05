@@ -1,7 +1,10 @@
 import { Link } from "react-router-dom";
 import logo from "../../assets/images/logo-transparent.svg";
 import { useState } from "react";
+import useAuth from "../../hooks/useAuth";
 const Register = () => {
+  // Get auth functionality
+  const {signUp} = useAuth()
   const [inputValue, setInputValue] = useState("");
   const [suggestions, setSuggestions] = useState([]);
   // State to store the checked checkboxes
@@ -40,7 +43,7 @@ const Register = () => {
     setSuggestions([]);
   };
 
-  // Handler function to get value from register form
+  // Handler function to get value from register form and signUp user
   const handleRegister = (e) => {
     e.preventDefault();
     const form = e.target;
@@ -52,6 +55,13 @@ const Register = () => {
     const city = form.city.value;
     const state = inputValue;
     const password = form.password.value;
+
+    try{
+        signUp(email, password)
+    }
+    catch(err){
+      console.log(err)
+    }
 
     console.table(name, email, phone, gender, checkbox, city, state, password)
 
