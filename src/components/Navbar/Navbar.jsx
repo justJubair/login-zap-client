@@ -1,6 +1,16 @@
 import { Link, NavLink } from "react-router-dom";
 import logo from "../../assets/images/logo-transparent.svg"
+import useAuth from "../../hooks/useAuth";
 const Navbar = () => {
+  const {user, logOut} = useAuth()
+
+  const handleLogout = ()=>{
+    logOut()
+    .then()
+    .catch(err=>{
+      console.log(err)
+    })
+  }
     const navLinks = <>
     <li>
     <NavLink
@@ -87,9 +97,14 @@ const Navbar = () => {
           
         </ul>
       </div>
-      <div className="navbar-end">
+      {
+        user ? <div className="navbar-end">
+        <button onClick={handleLogout} className="btn bg-[#49497d] border-none text-white hover:bg-purple-800">Logout</button>
+      </div> : <div className="navbar-end">
         <Link to="/login" className="btn bg-[#49497d] border-none text-white hover:bg-purple-800">Login</Link>
       </div>
+      }
+      
     </div>
   );
 };

@@ -8,6 +8,7 @@ import Register from "../pages/Register/Register";
 import Board from "../components/Board/Board";
 import Setting from "../pages/Dashboard/Setting";
 import PrivateRoute from "./PrivateRoute";
+import AddUser from "../components/AddUser/AddUser";
 
 
 const Router = createBrowserRouter([
@@ -36,6 +37,10 @@ const Router = createBrowserRouter([
             {
                 path: "/dashboard/setting",
                 element: <Setting/>
+            },
+            {
+                path: "/dashboard/addUser",
+                element: <AddUser/>
             }
         ]
     },

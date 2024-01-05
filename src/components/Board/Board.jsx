@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import useAuth from "../../hooks/useAuth";
 
 const Board = () => {
@@ -49,6 +50,11 @@ const Board = () => {
           </ul>
         </div>
       </div>
+
+      {/* add user button */}
+      <Link to="/dashboard/addUser" className="flex justify-end py-4">
+        <button className="btn bg-indigo-500 text-white border-none hover:bg-indigo-600">Add User</button>
+      </Link>
       <div className="overflow-x-auto">
         <table className="table">
           {/* head */}
