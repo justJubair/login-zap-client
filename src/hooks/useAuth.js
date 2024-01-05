@@ -1,5 +1,6 @@
-const { useContext } = require("react")
-const { AuthContext } = require("../Provider/AuthProvider")
+import { useContext } from "react"
+import { AuthContext } from "../Provider/AuthProvider"
+
 
 const useAuth = ()=>{
     const all = useContext(AuthContext)

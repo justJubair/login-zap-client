@@ -2,6 +2,9 @@ import { Link } from "react-router-dom";
 import logo from "../../assets/images/logo-transparent.svg";
 import { useState } from "react";
 import useAuth from "../../hooks/useAuth";
+import toast from "react-hot-toast";
+import { updateProfile } from "firebase/auth";
+import auth from "../../firebase/firebase.config";
 const Register = () => {
   // Get auth functionality
   const {signUp} = useAuth()
@@ -58,12 +61,19 @@ const Register = () => {
 
     try{
         signUp(email, password)
+        .then(()=>{
+           updateProfile(auth.currentUser, {
+            displayName: name
+           }).then(()=>{
+            toast.success(`${name} you registered successfully`)
+           })
+        })
     }
     catch(err){
-      console.log(err)
+      toast.error(err.message)
     }
 
-    console.table(name, email, phone, gender, checkbox, city, state, password)
+   
 
   };
 
