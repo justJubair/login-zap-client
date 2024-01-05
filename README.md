@@ -13,5 +13,17 @@ MongoDB used as the database for efficient storage and management of user data.
 - Responsive Design: Employed TailwindCSS to ensure a visually appealing and responsive user interface across various devices.
 - React Components: Utilized React components for a modular and maintainable codebase, promoting reusability.
 
+### Getting Started:
+- Clone the repository
+```
+git clone https://github.com/justJubair/login-zap-client.git
+```
+
+- Install the dependencies
+```
+npm install
+```
+
+
 
 
