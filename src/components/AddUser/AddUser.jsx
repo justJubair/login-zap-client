@@ -1,12 +1,22 @@
+import toast from "react-hot-toast";
+import { saveEmployee } from "../../api";
+import { useNavigate } from "react-router-dom";
+
 const AddUser = () => {
-    const handleAddUser = e=>{
+    const navigate = useNavigate()
+    const handleAddUser = async(e)=>{
         e.preventDefault()
         const form = e.target;
         const name = form.name.value;
         const email = form.email.value;
         const phone = form.phone.value;
         const role = form.role.value;
-        console.log(name, email, phone, role)
+        const employee = {name, email, phone, role}
+        const dbResponse = await saveEmployee(employee)
+        if(dbResponse.insertedId){
+            toast.success("User Added")
+            navigate("/dashboard/manageUsers")
+        }
     }
 
   return (

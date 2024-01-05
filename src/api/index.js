@@ -14,3 +14,14 @@ export const saveUser = async(user)=>{
         console.log(err)
     }
 }
+
+// POST; a employee
+export const saveEmployee = async(employee)=>{
+    try{
+        const res = await axiosInstance.post("/employees", employee)
+        return res.data
+    }
+    catch(err){
+        console.log(err)
+    }
+}
