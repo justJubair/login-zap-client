@@ -1,15 +1,38 @@
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import Loader from "../Loader/Loader";
+import { updateEmployee } from "../../api";
+import toast from "react-hot-toast";
 
 const UpdateEmployee = () => {
     const [employee, setEmployee] = useState({})
     const {id} = useParams()
+    const navigate = useNavigate()
     useEffect(()=>{
         fetch(`http://localhost:5000/employee/${id}`)
         .then(res=> res.json())
         .then(data=> setEmployee(data))
     },[id])
+
+    const handleAddEmployee = async(e)=>{
+        e.preventDefault()
+        const form = e.target;
+        const name = form.name.value;
+        const email = form.email.value;
+        const phone = form.phone.value;
+        const role = form.role.value;
+        const employee = {name, email, phone, role}
+
+        // update employee
+        const dbResponse = await updateEmployee(id, employee)
+        if(dbResponse.modifiedCount>0){
+            toast.success("User Updated")
+            navigate("/dashboard/manageUsers")
+        }
+       
+        
+    }
+
     
    
     if(!employee.role){
@@ -22,7 +45,7 @@ const UpdateEmployee = () => {
   
         {/* form */}
         <div>
-          <form>
+          <form onSubmit={handleAddEmployee}> 
               {/* name and email */}
            <div className="flex items-center gap-4">
            <input

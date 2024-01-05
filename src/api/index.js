@@ -26,6 +26,16 @@ export const saveEmployee = async(employee)=>{
     }
 }
 
+// PATCH; an employee
+export const updateEmployee = async(_id, employee)=>{
+    try{
+        const res = await axiosInstance.patch(`/employee/${_id}`, employee)
+        return res.data
+    }
+    catch(err){
+        console.log(err)
+    }
+}
 
 
 
